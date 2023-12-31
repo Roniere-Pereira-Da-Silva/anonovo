@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy New Year 2024</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #f06, #09f);
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      line-height: 100vh;
+    }
+
+    .fireworks {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 200px;
+      background-color: transparent;
+    }
+
+    .firework {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #ff0; /* Cor amarela para os fogos de artifício */
+      animation: explode 1s ease-out infinite;
+    }
+
+    @keyframes explode {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(20);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="fireworks" id="fireworks"></div>
+  <h1>Happy New Year 2024!</h1>
+
+  <script>
+    function createFirework() {
+      const firework = document.createElement('div');
+      firework.className = 'firework';
+      const xPos = Math.random() * window.innerWidth;
+      const yPos = Math.random() * window.innerHeight;
+      firework.style.left = `${xPos}px`;
+      firework.style.top = `${yPos}px`;
+      document.getElementById('fireworks').appendChild(firework);
+      setTimeout(() => {
+        firework.remove();
+      }, 1000);
+    }
+
+    function startFireworks() {
+      setInterval(createFirework, 200);
+    }
+
+    // Iniciar os fogos de artifício quando a página carregar
+    window.onload = startFireworks;
+  </script>
+</body>
+</html>
